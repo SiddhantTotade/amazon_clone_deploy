@@ -1,0 +1,625 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block style-product %}
+<link rel="stylesheet" href="{% static 'app/css/owl.carousel.min.css' %}" />
+<link rel="stylesheet" href="{% static 'app/css/owl.theme.default.min.css' %}" />
+<link rel="stylesheet" href="{% static 'app/css/product.css' %}">
+{% endblock %}
+
+{% block title %}Product{% endblock %}
+
+
+{% block main-content-desk-product %}
+<!-- Product for desktop -->
+<div class="product">
+    <div class="product-img">
+        <div class="big-img xzoom-container">
+            {% for p in product_img_dsk|slice:":1" %}
+            <img src="{{p.product_img_desk.url}}" class="xzoom" xoriginal="{{p.product_img_desk.url}}">
+            {% endfor %}
+        </div>
+        <div class="xzoom-thumbs small-img-container">
+            {% for p in product_img_dsk %}
+            <a href="{{p.product_img_desk.url}}" class="small-img">
+                <img src="{{p.product_img_desk.url}}" class="xzoom-gallery" alt="">
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="product-about">
+        <div class="product-name">
+            <h3>{{product.title}}</h3>
+        </div>
+        <div class="product-price product-name">
+            <h4>₹{{product.discounted_price}}</h4>
+        </div>
+        <div class="product-offers product-name">
+            <table>
+                <tr>
+                    <th> <img src="{% static 'app/img/product/product-discount.png' %}" alt=""> Save Extra with 5 offers
+                    </th>
+                </tr>
+                <tr>
+                    <td>Cashback (4): Amazon Pay Later Reward - Activate now & earn ₹150. And get surprise rewards
+                        when you shop with Amazon Pay</td>
+                </tr>
+                <tr>
+                    <td>No Cost EMI: Avail No Cost EMI on select cards for orders above ₹3000</td>
+                </tr>
+                <tr>
+                    <td>Exchange Offer: Up to ₹21,100.00 off on Exchange</td>
+                </tr>
+                <tr>
+                    <td>Bank Offer (3): 10% Instant Discount upto Rs.1500 with Citibank Credit Cards and Debit
+                        Cards(Non-EMI).Minimum purchase</td>
+                </tr>
+                <tr>
+                    <td>Partner Offers: Get GST invoice and save up to 28% on business purchases.</td>
+                </tr>
+            </table>
+        </div>
+        <div class="product-colors product-name">
+            <div class="color">
+                <img src="./img/product/product-color-1.jpg" alt="">
+            </div>
+            <div class="color">
+                <img src="./img/product/product-color-2.jpg" alt="">
+            </div>
+            <div class="color">
+                <img src="./img/product/product-color-3.jpg" alt="">
+            </div>
+            <div class="color">
+                <img src="./img/product/product-color-4.jpg" alt="">
+            </div>
+            <div class="color">
+                <img src="./img/product/product-color-5.jpg" alt="">
+            </div>
+        </div>
+        <div class="buy product-name">
+            {% if request.user.is_authenticated %}
+            {% if item_already_in_cart %}
+            <a href="{% url 'showcart' %}">Go to cart</a>
+            {% else %}
+            <form action="/add-to-cart">
+                <input type="hidden" name="prod_id" id="prod_id" value="{{product.id}}">
+                <button type="submit" class="addtocart">Add to cart</button>
+            </form>
+            {% endif %}
+            {% endif %}
+
+            {% if not request.user.is_authenticated %}
+            <form action="/checkout">
+                <input type="hidden" name="prod_id" id="prod_id" value="{{product.id}}">
+                <button type="submit" class="addtocart">Add to cart</button>
+            </form>
+            {% endif %}
+
+            <a href="{% url 'selectaddress' product.id %}">Buy now</a>
+        </div>
+        <div class="product-short-desc product-name">
+            <h3>About this item</h3>
+            <div id="list-item">
+                <p>{{ product.description|truncatechars:1100|linebreaks }}</p>
+                {% if product.description|length > 1000 %}
+                <div class="show-more-desc">
+                    <a id="show-more">Show more</a>
+                    <i class="uil uil-angle-right"></i>
+                </div>
+                {% endif %}
+            </div>
+            <div id="list-item-more">
+                <p>{{ product.description|linebreaks }}</p>
+                <div class="show-more-desc">
+                    <a id="show-less">Show less</a>
+                    <i class="uil uil-angle-left"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="product-description">
+        <div class="product-description-img">
+            {% for p in product_desc_desk %}
+            <img src="{{p.product_img_desc_desk.url}}" alt="">
+            {% endfor %}
+        </div>
+    </div>
+    <div class="product-details product-description product-about">
+        <div class="product-title">
+            <h1>Technical Details</h1>
+        </div>
+        <div class="product-detail-table">
+            <table class="detail-tabel-1">
+                {% for keys,values in product_detail_dict.items %}
+                <tr>
+                    <td><strong>{{keys}}</strong></td>
+                    <td>{{values}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+    <div class="review product-description">
+        <div class="review-left">
+            <div class="review-title">
+                <h2>Customer reviews</h2>
+            </div>
+            <div class="stars">
+                <div class="star">
+                    <span class="fa fa-star checked"></span>
+                </div>
+                <div class="star">
+                    <span class="fa fa-star checked"></span>
+                </div>
+                <div class="star">
+                    <span class="fa fa-star checked"></span>
+                </div>
+                <div class="star">
+                    <span class="fa fa-star checked"></span>
+                </div>
+                <div class="star">
+                    <span class="fa fa-star unchecked"></span>
+                </div>
+            </div>
+            <div class="bars">
+                <div class="bar-5 bar">
+                    <h5>5 Star</h5>
+                    <div class="5-star review-bar">
+                        <div class="fill-5 fill"></div>
+                    </div>
+                </div>
+                <div class="bar-4 bar">
+                    <h5>4 Star</h5>
+                    <div class="4-star review-bar">
+                        <div class="fill-4 fill"></div>
+                    </div>
+                </div>
+                <div class="bar-3 bar">
+                    <h5>3 Star</h5>
+                    <div class="3-star review-bar">
+                        <div class="fill-3 fill"></div>
+                    </div>
+                </div>
+                <div class="bar-2 bar">
+                    <h5>2 Star</h5>
+                    <div class="2-star review-bar">
+                        <div class="fill-2 fill"></div>
+                    </div>
+                </div>
+                <div class="bar-1 bar">
+                    <h5>1 Star</h5>
+                    <div class="1-star review-bar">
+                        <div class="fill-1 fill"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="review-right">
+            <div class="review-title top-reviews">
+                <h2>Top reviews from India</h2>
+            </div>
+            <div class="review-container">
+                <div class="user-rev">
+                    <div><i class="uil uil-user"></i></div>
+                    <strong>
+                        <h4>Siddhant Totade</h4>
+                    </strong>
+                </div>
+                <div class="user-star">
+                    <div class="star-review">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star unchecked"></span>
+                        <span class="fa fa-star unchecked"></span>
+                    </div>
+                    <strong>
+                        <h5>Lorem ipsum dolor sit amet.</h5>
+                    </strong>
+                </div>
+                <div class="review-content">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti veritatis ipsam excepturi
+                        nulla
+                        sapiente eius maxime, quam dolorum expedita, quas suscipit distinctio fuga.</p>
+                </div>
+            </div>
+            <div class="review-container">
+                <div class="user-rev">
+                    <div><i class="uil uil-user"></i></div>
+                    <strong>
+                        <h4>Siddhant Totade</h4>
+                    </strong>
+                </div>
+                <div class="user-star">
+                    <div class="star-review">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star unchecked"></span>
+                        <span class="fa fa-star unchecked"></span>
+                        <span class="fa fa-star unchecked"></span>
+                    </div>
+                    <strong>
+                        <h5>Lorem ipsum dolor sit amet.</h5>
+                    </strong>
+                </div>
+                <div class="review-content">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti veritatis ipsam excepturi
+                        nulla
+                        sapiente eius maxime, quam dolorum expedita, quas suscipit distinctio fuga.</p>
+                </div>
+            </div>
+            <div class="review-container">
+                <div class="user-rev">
+                    <div><i class="uil uil-user"></i></div>
+                    <strong>
+                        <h4>Siddhant Totade</h4>
+                    </strong>
+                </div>
+                <div class="user-star">
+                    <div class="star-review">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                    </div>
+                    <strong>
+                        <h5>Lorem ipsum dolor sit amet.</h5>
+                    </strong>
+                </div>
+                <div class="review-content">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti veritatis ipsam excepturi
+                        nulla
+                        sapiente eius maxime, quam dolorum expedita, quas suscipit distinctio fuga.</p>
+                </div>
+            </div>
+            <div class="review-container">
+                <div class="user-rev">
+                    <div><i class="uil uil-user"></i></div>
+                    <strong>
+                        <h4>Siddhant Totade</h4>
+                    </strong>
+                </div>
+                <div class="user-star">
+                    <div class="star-review">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star unchecked"></span>
+                    </div>
+                    <strong>
+                        <h5>Lorem ipsum dolor sit amet.</h5>
+                    </strong>
+                </div>
+                <div class="review-content">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti veritatis ipsam excepturi
+                        nulla
+                        sapiente eius maxime, quam dolorum expedita, quas suscipit distinctio fuga.</p>
+                </div>
+            </div>
+            <div class="review-container">
+                <div class="user-rev">
+                    <div><i class="uil uil-user"></i></div>
+                    <strong>
+                        <h4>Siddhant Totade</h4>
+                    </strong>
+                </div>
+                <div class="user-star">
+                    <div class="star-review">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star unchecked"></span>
+                        <span class="fa fa-star unchecked"></span>
+                        <span class="fa fa-star unchecked"></span>
+                        <span class="fa fa-star unchecked"></span>
+                    </div>
+                    <strong>
+                        <h5>Lorem ipsum dolor sit amet.</h5>
+                    </strong>
+                </div>
+                <div class="review-content">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti veritatis ipsam excepturi
+                        nulla
+                        sapiente eius maxime, quam dolorum expedita, quas suscipit distinctio fuga.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block main-content-mob-product %}
+<!--Product for mobile  -->
+<div class="product-mob">
+    <div class="product-carousel">
+        <div class="product-title">
+            <small>{{product.title}}</small>
+        </div>
+        <div class="owl-carousel owl-theme">
+            {% for p in product_img_dsk %}
+            <div class="item">
+                <img src="{{p.product_img_desk.url}}" alt="">
+            </div>
+            {% endfor %}
+            <!-- <div class="item">
+                <img src="{% static 'app/img/product/product-img-2.jpg' %}" alt="">
+            </div>
+            <div class="item">
+                <img src="{% static 'app/img/product/product-img-3.jpg' %}" alt="">
+            </div>
+            <div class="item">
+                <img src="{% static 'app/img/product/product-img-4.jpg' %}" alt="">
+            </div>
+            <div class="item">
+                <img src="./img/product/product-img-5.jpg" alt="">
+            </div>
+            <div class="item">
+                <img src="./img/product/product-img-6.jpg" alt="">
+            </div> -->
+        </div>
+        <div class="product-price">
+            <h3>-2% ₹{{product.discounted_price}}</h3>
+        </div>
+        <div class="product-emi">
+            <strong>EMI from ₹6,444. No Cost EMI Available.</strong>
+        </div>
+    </div>
+    <div class="product-color">
+        <!-- <div class="product-color-img">
+            <div class="color-img">
+                <img src="./img/product/product-mob-color-1.jpg" alt="">
+                <h4>Sierra Blue</h4>
+            </div>
+            <div class="color-img">
+                <img src="./img/product/product-mob-color-2.jpg" alt="">
+                <h4>Alpine Green</h4>
+            </div>
+            <div class="color-img">
+                <img src="./img/product/product-mob-color-3.jpg" alt="">
+                <h4>Gold</h4>
+            </div>
+            <div class="color-img">
+                <img src="./img/product/product-mob-color-4.jpg" alt="">
+                <h4>Graphite</h4>
+            </div>
+            <div class="color-img">
+                <img src="./img/product/product-mob-color-5.jpg" alt="">
+                <h4>Silver</h4>
+            </div>
+        </div>
+        <div class="price-box">
+            <div class="price-box-inner">
+                <p>128GB</p>
+                <h3>₹1,26,900.00</h3>
+            </div>
+            <div class="price-box-inner">
+                <p>256GB</p>
+                <h3>₹1,36,900.00</h3>
+            </div>
+            <div class="price-box-inner">
+                <p>512GB</p>
+                <h3>₹1,59,900.00</h3>
+            </div>
+        </div> -->
+    </div>
+    <div class="product-offer">
+        <table>
+            <tr>
+                <th><img src="{% static 'app/img/product/product-discount.png' %}" alt=""> Save Extra with 5 offers</th>
+            </tr>
+            <tr>
+                <td>Cashback (4): Amazon Pay Later Reward - Activate now & earn ₹150. And get surprise rewards
+                    when you shop with Amazon Pay</td>
+            </tr>
+            <tr>
+                <td>No Cost EMI: Avail No Cost EMI on select cards for orders above ₹3000</td>
+            </tr>
+            <tr>
+                <td>Exchange Offer: Up to ₹21,100.00 off on Exchange</td>
+            </tr>
+            <tr>
+                <td>Bank Offer (3): 10% Instant Discount upto Rs.1500 with Citibank Credit Cards and Debit
+                    Cards(Non-EMI).Minimum purchase</td>
+            </tr>
+            <tr>
+                <td>Partner Offers: Get GST invoice and save up to 28% on business purchases.</td>
+            </tr>
+        </table>
+        <div class="buy-buttons">
+            {% if request.user.is_authenticated %}
+            {% if item_already_in_cart %}
+            <a href="{% url 'showcart' %}" class="addtocart-mob">Goto Cart</a>
+            {% else %}
+            <form action="/add-to-cart" class="add-to-cart">
+                <input type="hidden" name="prod_id" id="prod_id" value="{{product.id}}">
+                <button type="submit" class="buynow-mob">Add to cart</button>
+            </form>
+            {% endif %}
+            {% endif %}
+
+            {% if not request.user.is_authenticated %}
+            <form action="/checkout" class="add-to-cart">
+                <input type="hidden" name="prod_id" id="prod_id" value="{{product.id}}">
+                <button type="submit" class="addtocart">Add to cart</button>
+            </form>
+            {% endif %}
+
+            <a href="{% url 'selectaddress' product.id %}" class="buy-now">Buy now</a>
+        </div>
+    </div>
+    <div class="product-details product-offer">
+        <div class="detail-title">
+            <h2>Details</h2>
+        </div>
+        <div class="details-small">
+            <table class="detail-tabel-1">
+                {% for keys,values in product_detail_dict.items %}
+                <tr>
+                    <td><strong>{{keys}}</strong></td>
+                    <td>{{values}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+    <div class="details-img product-details product-offer">
+        <div class="details-img-title detail-title">
+            <h2>From the manufacturer</h2>
+        </div>
+        <div class="details-img-container">
+            {% for p in product_desc_desk %}
+            <img src="{{p.product_img_desc_desk.url}}" alt="">
+            {% endfor %}
+        </div>
+    </div>
+    <div class="features-details product-details product-offer">
+        <div class="features-title detail-title">
+            <h2>Features & Details</h2>
+        </div>
+        <div class="details-desc">
+            {{ product.description|linebreaks }}
+        </div>
+    </div>
+    <div class="product-review product-details product-offer">
+        <div class="review-left">
+            <div class="review-title">
+                <h2>Customer reviews</h2>
+            </div>
+            <div class="stars">
+                <div class="star">
+                    <span class="fa fa-star checked"></span>
+                </div>
+                <div class="star">
+                    <span class="fa fa-star checked"></span>
+                </div>
+                <div class="star">
+                    <span class="fa fa-star checked"></span>
+                </div>
+                <div class="star">
+                    <span class="fa fa-star checked"></span>
+                </div>
+                <div class="star">
+                    <span class="fa fa-star"></span>
+                </div>
+                <div class="outof">
+                    <span>4 out of 5</span>
+                </div>
+            </div>
+            <div class="bars">
+                <div class="bar-5 bar">
+                    <h5>5 Star</h5>
+                    <div class="5-star review-bar">
+                        <div class="fill-5 fill"></div>
+                    </div>
+                </div>
+                <div class="bar-4 bar">
+                    <h5>4 Star</h5>
+                    <div class="4-star review-bar">
+                        <div class="fill-4 fill"></div>
+                    </div>
+                </div>
+                <div class="bar-3 bar">
+                    <h5>3 Star</h5>
+                    <div class="3-star review-bar">
+                        <div class="fill-3 fill"></div>
+                    </div>
+                </div>
+                <div class="bar-2 bar">
+                    <h5>2 Star</h5>
+                    <div class="2-star review-bar">
+                        <div class="fill-2 fill"></div>
+                    </div>
+                </div>
+                <div class="bar-1 bar">
+                    <h5>1 Star</h5>
+                    <div class="1-star review-bar">
+                        <div class="fill-1 fill"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="review-container">
+            <div class="user">
+                <div><i class="uil uil-user"></i></div>
+                <strong>
+                    <h4>Siddhant Totade</h4>
+                </strong>
+            </div>
+            <div class="user-star">
+                <div class="star-review">
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                </div>
+                <strong>
+                    <h5>Lorem ipsum dolor sit amet.</h5>
+                </strong>
+            </div>
+            <div class="review-content">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti veritatis ipsam excepturi
+                    nulla
+                    sapiente eius maxime, quam dolorum expedita, quas suscipit distinctio fuga.</p>
+            </div>
+        </div>
+        <div class="review-container">
+            <div class="user">
+                <div><i class="uil uil-user"></i></div>
+                <strong>
+                    <h4>Siddhant Totade</h4>
+                </strong>
+            </div>
+            <div class="user-star">
+                <div class="star-review">
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                </div>
+                <strong>
+                    <h5>Lorem ipsum dolor sit amet.</h5>
+                </strong>
+            </div>
+            <div class="review-content">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti veritatis ipsam excepturi
+                    nulla
+                    sapiente eius maxime, quam dolorum expedita, quas suscipit distinctio fuga.</p>
+            </div>
+        </div>
+        <div class="review-container">
+            <div class="user">
+                <div><i class="uil uil-user"></i></div>
+                <strong>
+                    <h4>Siddhant Totade</h4>
+                </strong>
+            </div>
+            <div class="user-star">
+                <div class="star-review">
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star "></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                </div>
+                <strong>
+                    <h5>Lorem ipsum dolor sit amet.</h5>
+                </strong>
+            </div>
+            <div class="review-content">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti veritatis ipsam excepturi
+                    nulla
+                    sapiente eius maxime, quam dolorum expedita, quas suscipit distinctio fuga.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block js-product %}
+<script src="{% static 'app/js/jquery.min.js' %}"></script>
+<script src="{% static 'app/js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'app/js/zoom.js' %}"></script>
+<script src="{% static 'app/js/product.js' %}"></script>
+{% endblock %}

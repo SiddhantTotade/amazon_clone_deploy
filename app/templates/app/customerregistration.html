@@ -1,0 +1,109 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon Clone | Create</title>
+    <link rel="stylesheet" href="{% static 'app/css/customerregistration.css' %}">
+</head>
+
+<body>
+    <!-- Registration for Desktop -->
+    <div class="login-desktop">
+        <div class="amazon-logo">
+            <img src="{% static 'app/img/amazon-black.png' %}" alt="">
+            <h4>.in</h4>
+        </div>
+        <form action="" method="post" novalidate>
+            {% csrf_token %}
+            <div class="login-container">
+                <div class="signin-container">
+                    <div class="sign-in-title">
+                        <h1>Create Account</h1>
+                    </div>
+                    <div class="user-login">
+                        {% for fm in form %}
+                        <div class="user-input">
+                            {{fm.label_tag}} {{fm}}
+                            <!-- <small class="text-danger"> {{fm.errors|striptags}} -->
+                        </div>
+                        {% endfor %}
+                        <input type="submit" value="Continue" class="continue-btn">
+                    </div>
+                </div>
+                <div class="continue user-login">
+                    <small>
+                        We will send you a text to verify your phone.
+                        Message and Data rates may apply.
+                    </small>
+                </div>
+            </div>
+            {% if form.non_field_errors %}
+            {% for error in form.non_field_errors %}
+            <p class="form-alert">{{error}}</p>
+            {% endfor %}
+            {% endif %}
+            <div class="new-amazon user-login">
+                <small>Already have an account ?</small>
+            </div>
+            <div class="create-account">
+                <a href="{% url 'login' %}" class="login">Login</a>
+            </div>
+        </form>
+    </div>
+
+    <!-- Registration for Mobile -->
+    <div class="login-mobile">
+        <div class="logo">
+            <img src="{% static 'app/img/amazon-logo.png' %}" alt="">
+            <h5>.in</h5>
+        </div>
+        <div class="login-container-mob">
+            <div class="welcome-title">
+                <h1>Welcome</h1>
+            </div>
+            <div class="login-create">
+                <div class="create">
+                    <form action="" method="post" novalidate class="login-user">
+                        {% csrf_token %}
+                        <div class="login">
+                            <h3>Create Account.</h3>
+                            <small>New to Amazon ?</small>
+                        </div>
+                        <div class="email" id="email">
+                            {% for fm in form %}
+                            <div class="login-form">
+                                {{fm.label_tag}} {{fm}} <small class="text-danger">{{fm.errors|striptags}}</small><br>
+                            </div>
+                            {% endfor %}
+                            {% if form.non_field_errors %}
+                            {% for error in form.non_field_errors %}
+                            <p>{{error}}</p>
+                            {% endfor %}
+                            {% endif %}
+                            <button class="create-mob">Continue</button>
+                        </div>
+                        <a href="{% url 'login' %}" class="create-account-mob">Login</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="delivery-footer">
+        <div class="footer-content">
+            <small>Conditions of Use</small>
+            <small>Privacy Notice</small>
+            <small>Interest-Based Ads</small>
+        </div>
+        <div class="copyrights">
+            <small>&copy;All rights reserved by Siddhant Totade</small>
+        </div>
+        </div>
+    </footer>
+</body>
+<script src="{% static 'app/js/login.js' %}"></script>
+
+</html>

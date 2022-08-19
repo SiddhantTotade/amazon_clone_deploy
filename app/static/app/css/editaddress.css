@@ -1,0 +1,145 @@
+body {
+    background: #fff;
+}
+
+/* Media Query for Desktop */
+@media screen and (min-width:401px) {
+
+    .user-address {
+        display: grid;
+        width: 80%;
+        margin: auto;
+        gap: 20px;
+        padding: 10px 10px;
+        margin-bottom: 16em;
+    }
+
+    .user-address h1,
+    .user-address h5,
+    .user-address h3,
+    .user-address small {
+        color: #000000;
+    }
+
+    .user-address-container {
+        width: 50%;
+        display: grid;
+        gap: 20px;
+        padding: 10px 10px;
+        margin-top: 1em;
+        border-radius: 5px;
+    }
+
+    .name {
+        display: grid;
+        gap: 5px;
+    }
+
+    .name input {
+        height: 4vh;
+        width: 100%;
+        padding: 10px 10px;
+        border: 2px solid rgb(201, 201, 201);
+        border-radius: 5px;
+        color: #000000;
+    }
+
+    .user-add {
+        display: grid;
+        width: 40%;
+    }
+
+    .user-add input {
+        height: 4vh;
+        border-radius: 5px;
+        padding: 10px 10px;
+        border: 2px solid gainsboro;
+        color: #000000;
+    }
+
+    .user-add label {
+        color: #000000;
+    }
+
+    .user-add select {
+        height: 4vh;
+        border-radius: 5px;
+        border: 2px solid gainsboro;
+        color: #000000;
+    }
+
+    .user-add option {
+        color: #000000;
+    }
+
+    .save {
+        display: flex;
+        gap: 10px;
+    }
+
+    .save button,
+    .save a {
+        cursor: pointer;
+        text-decoration: none;
+        font-size: medium;
+        padding: 10px 25px;
+        border: none;
+        border-radius: 5px;
+        background-color: yellow;
+        color: #000000;
+    }
+}
+
+/* Media Query for Mobile */
+@media screen and (max-width:400px) {
+
+    .user-address-mob {
+        display: grid;
+        gap: 20px;
+        padding: 10px 10px;
+    }
+
+    .user-address-container {
+        display: grid;
+        gap: 15px;
+        padding: 10px 10px;
+        border-radius: 5px;
+        border: 2px solid grey;
+    }
+
+    .user-address-mob h1,
+    .user-address-mob h5,
+    .user-address-mob h3,
+    .user-address-mob small {
+        color: #000000;
+    }
+
+    .user-add {
+        display: grid;
+    }
+
+    .user-add label {
+        color: #000000;
+    }
+
+    .user-add input,
+    .user-add select {
+        font-size: medium;
+        color: #000000;
+        padding: 10px 10px;
+        border-radius: 5px;
+        border: 2px solid gainsboro;
+    }
+
+    .user-add option {
+        color: #000000;
+    }
+
+    .save button {
+        padding: 10px 25px;
+        border: none;
+        border-radius: 5px;
+        background-color: yellow;
+        color: #000000;
+    }
+}

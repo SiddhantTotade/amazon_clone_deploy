@@ -1,0 +1,69 @@
+body {
+    background: #fff;
+}
+
+/* Media Query for Desktop */
+@media screen and (min-width:401px) {
+
+    .login-security {
+        display: grid;
+        width: 80%;
+        margin: auto;
+        padding: 10px 10px;
+        gap: 10px;
+        margin-bottom: 15em;
+    }
+
+    .login-security h1,
+    .login-security h3,
+    .login-security small {
+        color: #000000;
+    }
+
+    .login-security-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        margin-top: 2em;
+        margin-bottom: 1em;
+    }
+
+    .name {
+        text-decoration: none;
+        border-radius: 5px;
+        padding: 20px 20px;
+        border: 1px solid gray;
+    }
+
+    .name:hover {
+        background-color: #cdcdcd;
+        cursor: pointer;
+    }
+}
+
+/* Media Query for Mobile */
+@media screen and (max-width:400px) {
+
+    .login-security-mob {
+        display: grid;
+        gap: 20px;
+        padding: 10px 10px;
+    }
+
+    .login-security-mob h1,
+    .login-security-mob h3,
+    .login-security-mob small {
+        color: #000000;
+    }
+
+    .login-security-container {
+        display: grid;
+        gap: 20px;
+    }
+
+    .name-mob {
+        padding: 10px 10px;
+        border: 1px solid gainsboro;
+        border-radius: 5px;
+    }
+}

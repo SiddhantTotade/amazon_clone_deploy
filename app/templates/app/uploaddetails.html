@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'app/css/uploaddetails.css' %}">
+    <title>Amazon Clone | Upload Details</title>
+</head>
+
+<body>
+    <div class="upload-container">
+        <div class="upload-title">
+            <h1>Upload Product/Details</h1>
+        </div>
+        <div class="upload-product">
+            <form id="product-form" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% for fm in form %}
+                <div class="product">
+                    {{fm.label_tag}} {{fm}}<small></small>
+                </div>
+                {% endfor %}
+                <div class="product-sub-images product">
+                    <label for="id-description">Product sub img:</label>
+                    <input type="file" multiple name="product-sub-img" id="">
+                </div>
+                <div class="product-submit">
+                    <button class="submit-btn" type="submit" name="saveproduct">Save Product</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+<script src="{% static  'app/js/uploaddetails.js' %}"></script>
+
+</html>

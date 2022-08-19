@@ -1,0 +1,51 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block title %}Add address{% endblock %}
+
+{% block style-addaddress %}
+<link rel="stylesheet" href="{% static 'app/css/addaddress.css' %}">
+{% endblock %}
+
+
+{% block main-content-desk-addaddress %}
+<div class="user-address">
+    <div class="login-title">
+        <h1>Add Address</h1>
+    </div>
+    <form action="" method="post" class="user-form">
+        {% csrf_token %}
+        {% for fm in form %}
+        <div class="user-add">
+            {{fm.label_tag}} {{fm}} <small class="text-danger">{{fm.errors|striptags}}</small><br>
+        </div>
+        {% endfor %}
+        <div class="save">
+            <button class="save-btn">Save</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+{% block main-content-mob-addaddress %}
+<div class="user-address-mob">
+    <div class="login-title">
+        <h1>Add Address</h1>
+    </div>
+    <form action="" method="post" class="user-form">
+        {% csrf_token %}
+        {% for fm in form %}
+        <div class="user-add">
+            {{fm.label_tag}} {{fm}} <small class="text-danger">{{fm.errors|striptags}}</small><br>
+        </div>
+        {% endfor %}
+        <div class="save">
+            <button class="save-btn">Save</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+{% block js-addaddress %}
+<script src="{% static 'app/js/addaddress.js' %}"></script>
+{% endblock %}

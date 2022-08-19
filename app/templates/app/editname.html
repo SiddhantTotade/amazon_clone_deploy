@@ -1,0 +1,49 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block title %}Edit name{% endblock %}
+
+{% block style-editname %}
+<link rel="stylesheet" href="{% static 'app/css/editname.css' %}">
+{% endblock %}
+
+
+{% block main-content-desk-editname %}
+<!-- Edit name for desktop -->
+<div class="change-pass">
+    <div class="change-pass-title">
+        <h1>Change Username</h1>
+    </div>
+    <form action="" method="post" class="edit-name-form">
+        {% csrf_token %}
+        <div class="edit-name">
+            {{form.label_tag}} {{form}}
+        </div>
+        <div class="save">
+            <button>Save</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+{% block main-content-mob-editname %}
+<!-- Edit name for mobile -->
+<div class="change-pass-mob">
+    <div class="change-pass-title">
+        <h1>Change Name</h1>
+    </div>
+    <form action="" method="post" class="edit-name-form">
+        {% csrf_token %}
+        <div class="edit-name">
+            {{form.label_tag}} {{form}}
+        </div>
+        <div class="save">
+            <button>Save</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+{% block js-editname %}
+<script src="{% static 'app/js/editname.js' %}"></script>
+{% endblock %}

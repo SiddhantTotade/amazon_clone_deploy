@@ -1,0 +1,140 @@
+body {
+    background: rgb(255, 255, 255);
+}
+
+@media screen and (min-width:401px) {
+
+    .thankyou {
+        display: flex;
+        width: 80%;
+        margin: auto;
+        padding: 50px;
+        margin-top: 5em;
+        gap: 15px;
+        border: 2px solid green;
+        border-radius: 5px;
+    }
+
+    .thankyou i {
+        font-size: 4em;
+    }
+
+    .thankyou h3,
+    .thankyou h4,
+    .thankyou li,
+    .thankyou strong {
+        color: black;
+    }
+
+    .thankyou h1,
+    .thankyou i {
+        color: rgb(52 145 52);
+    }
+
+    .thankyou-title {
+        display: grid;
+        gap: 10px;
+    }
+
+    .delivery,
+    .delivery h4 {
+        display: flex;
+        color: rgb(52 145 52);
+    }
+
+    .delivery-date {
+        padding: 0 10px;
+    }
+
+    .product-img img {
+        width: 100%;
+    }
+
+    .continue-shopping {
+        width: 80%;
+        margin: auto;
+        margin-top: 2em;
+        margin-bottom: 17em;
+    }
+
+    .continue-shopping a {
+        text-decoration: none;
+        font-size: medium;
+        padding: 10px 40px;
+        border-radius: 5px;
+        background-color: yellow;
+        color: #000000;
+        border: none;
+    }
+}
+
+@media screen and (max-width:400px) {
+
+    .product-img img {
+        width: 100%;
+    }
+
+    .thank {
+        display: flex;
+        border: 2px solid #3ab712eb;
+        padding: 10px 0;
+        margin: 10px 10px;
+        border-radius: 5px;
+    }
+
+    .thank h1,
+    .thank h3,
+    .thank strong,
+    .thank h4 {
+        color: #000000;
+    }
+
+    .thank-you-mob h1 {
+        color: #3ab712eb;
+    }
+
+    .thank-you-mob i {
+        font-size: 4em;
+        color: #3ab712eb;
+    }
+
+    .thankyou-order {
+        display: grid;
+        gap: 20px;
+    }
+
+    .order strong {
+        display: grid;
+        gap: 10px;
+    }
+
+    .delivery {
+        display: flex;
+    }
+
+    .delivery h4 {
+        color: #3ab712eb;
+        padding: 0 10px;
+    }
+
+    .continue-shopping {
+        width: 100%;
+    }
+
+    .continue-shopping-mob a {
+        text-decoration: none;
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        width: 80%;
+        height: 4vh;
+        margin: auto;
+        margin-top: 1em;
+        margin-bottom: 3em;
+        border-radius: 5px;
+        color: #000000;
+        font-size: medium;
+        background-color: yellow;
+        border: none;
+    }
+}

@@ -1,0 +1,601 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'app/css/base.css' %}">
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  {% block style-home %}{% endblock %}
+  {% block style-product %}{% endblock %}
+  {% block style-productlist %}{% endblock %}
+  {% block style-noproduct %}{% endblock %}
+  {% block style-address %}{% endblock %}
+  {% block style-checkout %}{% endblock %}
+  {% block style-checkoutcart %}{% endblock %}
+  {% block style-account %}{% endblock %}
+  {% block style-addtocart %}{% endblock %}
+  {% block style-emptycart %}{% endblock %}
+  {% block style-orders %}{% endblock %}
+  {% block style-profile %}{% endblock %}
+  {% block style-passwordchange %}{% endblock %}
+  {% block style-changeaddress %}{% endblock %}
+  {% block style-addaddress %}{% endblock %}
+  {% block style-editaddress %}{% endblock %}
+  {% block style-deleteaddress %}{% endblock %}
+  {% block style-editemail %}{% endblock %}
+  {% block style-editmobile %}{% endblock %}
+  {% block style-editname %}{% endblock %}
+  {% block style-thankyou %}{% endblock %}
+  <title>Amazon Clone | {% block title %}{% endblock %}</title>
+</head>
+
+<body>
+  <!--Header for Mobile -->
+  <header class="mobile">
+    <div class="container">
+      <div class="row">
+        <!-- Left Div -->
+        <div class="col-left">
+          <i class="uil uil-bars open-menu"></i>
+          <i class="uil uil-amazon"></i>
+        </div>
+        <!-- Right Div -->
+        <div class="col-right">
+          {% if request.user.is_authenticated %}
+          <h6 class="name">{{ request.user|capfirst }}</h6>
+          {% else %}
+          <h6 class="name">Sign in</h6>
+          {% endif %}
+          <a href="{% url 'account' %}"><i class="uil uil-user"></i></a>
+          <a href="{% url 'showcart' %}"><i class="uil uil-shopping-cart"></i></a>
+        </div>
+      </div>
+      <!-- Search Form -->
+      <form action="/product-list/" method="get" class="search">
+        <input class="search-bar-mob" type="text" name="search_products" id="search-bar-mob"
+          placeholder="Search Amazon.in">
+        <button class="submit-btn" type="submit"><i class="uil uil-search"></i></button>
+      </form>
+      <!-- Navbar - Sub Container -->
+      <nav>
+        <ul>
+          <li><small>Shop by</small></li>
+        </ul>
+        <ul>
+          <li><a href="">Category</a></li>
+          <li><a href="">Wishlist</a></li>
+          <li><a href="">Deals</a></li>
+          <li><a href="">Sell</a></li>
+        </ul>
+      </nav>
+      <!-- Sidebar Div -->
+      <div class="sidebar">
+        <div class="close">
+          <i class="uil uil-multiply close-menu"></i>
+        </div>
+        <div class="sidebar-header">
+          <h5>Browse</h5>
+          <h1>Amazon</h1>
+        </div>
+        <hr>
+        <div class="row-1 row">
+          <h2>Amazon Home</h2>
+          <i class="uil uil-estate"></i>
+        </div>
+        <hr>
+        <div class="row-2">
+          <h2>Trending</h2>
+          <div class="menu">
+            <a href="#">Best Sellers</a>
+            <a href="#">New Release</a>
+            <a href="#">Movers and Shakers</a>
+          </div>
+        </div>
+        <hr>
+        <div class="row-3">
+          <h2>Top Categories</h2>
+          <div class="menu">
+            <a href="#">Electronics</a>
+            <a href="#">Computer & Accessories</a>
+            <a href="#">Baby</a>
+            <a href="#">Home & Kitchen</a>
+            <a href="#">See All Categories</a>
+          </div>
+        </div>
+        <hr>
+        <div class="row-4">
+          <h2>Programs and Features</h2>
+          <div class="menu">
+            <a href="#">Todays Deal's</a>
+            <a href="#">Amazon Pay</a>
+            <a href="#">Try Prime</a>
+            <a href="#">#FoundItOnAmazon</a>
+            <a href="#">Sell on Amazon</a>
+            <a href="{% url 'account' %}">Accounts</a>
+            <a href="#">Style Feed</a>
+            <a href="{% url 'logout' %}">Sign out</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Location Div - Sub Container after Navbar -->
+    <div class="location-container">
+      <div class="location">
+        <i class="uil uil-location-point"></i>
+        {% if request.user.is_authenticated %}
+        <span><small>Deleiver to {{ request.user|capfirst }} - Raipur 492009</small></span>
+        {% else %}
+        <span><small>Deleiver to Sign in</small></span>
+        {% endif %}
+      </div>
+    </div>
+  </header>
+
+  {% block upload-product %}{% endblock %}
+  {% block main-content-mob-index %}{% endblock %}
+  {% block main-content-mob-product %}{% endblock %}
+  {% block main-content-mob-productlist %}{% endblock %}
+  {% block main-content-mob-noproduct %}{% endblock %}
+  {% block main-content-mob-address %}{% endblock %}
+  {% block main-content-mob-checkout %}{% endblock %}
+  {% block main-content-mob-checkoutcart %}{% endblock %}
+  {% block main-content-mob-account %}{% endblock %}
+  {% block main-content-mob-addtocart %}{% endblock %}
+  {% block main-content-mob-emptycart %}{% endblock %}
+  {% block main-content-mob-orders %}{% endblock %}
+  {% block main-content-mob-profile %}{% endblock %}
+  {% block main-content-mob-passwordchange %}{% endblock %}
+  {% block main-content-mob-changeaddress %}{% endblock %}
+  {% block main-content-mob-addaddress %}{% endblock %}
+  {% block main-content-mob-editaddress %}{% endblock %}
+  {% block main-content-mob-deleteaddress %}{% endblock %}
+  {% block main-content-mob-editemail %}{% endblock %}
+  {% block main-content-mob-editmobile %}{% endblock %}
+  {% block main-content-mob-editname %}{% endblock %}
+  {% block main-content-mob-thankyou %}{% endblock %}
+
+  <footer class="upper">
+    <div class="col-1">
+      {% if request.user.is_authenticated %}
+      <small>{{ request.user|capfirst }}'s Amazon.in</small>
+      {% else %}
+      <small>Amazon.in</small>
+      {% endif %}
+      <small>Amazon Pay</small>
+      <small>Wish List</small>
+      <small>Your Account</small>
+      <small>Returns</small>
+      <small>Customer Service</small>
+    </div>
+    <div class="col-2">
+      <small>Your Orders</small>
+      <small>Amazon App Download</small>
+      <small>Find a Wish List</small>
+      <small>Your Recently Viewed Items</small>
+      <small>Sell</small>
+      <small>Help</small>
+    </div>
+  </footer>
+  <footer class="lower">
+    <div class="globe">
+      <i class="uil uil-globe"></i>
+      <small>English</small>
+    </div>
+    <div class="accounts">
+      <small>Switch Accounts</small>
+    </div>
+    <div class="signout">
+      <small>Sign Out</small>
+    </div>
+    <div class="rights">
+      <small>&copy; All rights reserved by Siddhant Totade</small>
+    </div>
+  </footer>
+
+  <!-- Header for Desktop -->
+  <header class="desktop">
+    <nav class="container">
+      <div class="left">
+        <div class="logo">
+          <img class="amazon-logo" src="{% static 'app/img/amazon-logo.png' %}" alt="">
+          <span>.in</span>
+        </div>
+        <a href="{% url 'address' %}" class="address-container">
+          <i class="uil uil-location-point location-icon"></i>
+          <div class="address">
+            {% if request.user.is_authenticated %}
+            <span><small>Deliver to {{ request.user|capfirst }}</small></span>
+            <h4>{{location.city|capfirst}} {{location.zipcode}}</h4>
+            <h4>{{address.city|capfirst}} {{address.zipcode}}</h4>
+            {% else %}
+            <span><small>Deliver to Sign in</small></span>
+            <h4>Raipur 0X0X0X</h4>
+            {% endif %}
+          </div>
+        </a>
+      </div>
+      <div class="middle">
+        <div class="dropdown">
+          <button class="dropdown-btn">
+            All <i class="uil uil-angle-down"></i>
+          </button>
+          <div class="dropdown-menu">
+            <li><a href="#">All Categories</a></li>
+            <li><a href="#">Alexa Devices</a></li>
+            <li><a href="#">Books</a></li>
+            <li><a href="#">Computers & Accessories</a></li>
+            <li><a href="#">Cloths</a></li>
+            <li><a href="#">Collectibles</a></li>
+            <li><a href="#">Deals</a></li>
+            <li><a href="#">Electronics</a></li>
+            <li><a href="#">Furniture</a></li>
+            <li><a href="#">Music</a></li>
+            <li><a href="#">Software</a></li>
+            <li><a href="#">Sports, Fitness & Outdoors</a></li>
+            <li><a href="#">Shoe & Handbags</a></li>
+            <li><a href="#">Toys and Games</a></li>
+            <li><a href="#">Watches</a></li>
+          </div>
+          <div class="search-form">
+            <form action="/product-list/" method="get" class="search" id="search">
+              {% csrf_token %}
+              <input type="text" id="search-bar" name="search_products" class="search-bar">
+              <button class="search-btn" type="submit"><i class="uil uil-search"></i></button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="right">
+        <div class="flag">
+          <img class="india-flag" src="{% static 'app/img/india.png' %}" alt="">
+          <i class="uil uil-angle-down"></i>
+        </div>
+        <a href="{% url 'account' %}" class="account">
+          {% if request.user.is_authenticated %}
+          <span><small>Hello, {{ request.user|capfirst }}</small></span>
+          {% else %}
+          <span><small>Hello, Sign in</small></span>
+          {% endif %}
+          <div class="account-down">
+            <h4>Account & Lists</h4>
+            <i class="uil uil-angle-down account-icon"></i>
+          </div>
+        </a>
+        <a href="{% url 'orders' %}" class="order">
+          <span><small>Return</small></span>
+          <h4>& Orders</h4>
+        </a>
+        <div class="cart">
+          <a href="{% url 'showcart' %}"><i class="uil uil-shopping-cart cart-item"></i></a>
+        </div>
+      </div>
+      <div class="sidebar-desktop">
+        <div class="close-and-user close">
+          <i class="uil uil-multiply close-menu-desktop"></i>
+          <div class="user">
+            <i class="uil uil-user user-desktop"></i>
+            {% if request.user.is_authenticated %}
+            <h2>Hello, {{ request.user|capfirst }}</h2>
+            {% else %}
+            <h2>Hello, Sign in</h2>
+            {% endif %}
+          </div>
+        </div>
+        <hr>
+        <div class="row-1 row">
+          <h2>Trending</h2>
+          <div class="menu">
+            <a href="#">Best Sellers</a>
+            <a href="#">New Release</a>
+            <a href="#">Movers and Shakers</a>
+          </div>
+        </div>
+        <hr>
+        <div class="row-2 row">
+          <h2>Digital Content & Devices</h2>
+          <div class="menu">
+            <a href="#">Echo Alexa</a>
+            <a href="#">Fire TV</a>
+            <a href="#">Kindle E-Reaaders & eBooks</a>
+            <a href="#">Audible AudioBooks</a>
+            <a href="#">Amazon Prime Video</a>
+            <a href="#">Amazon Prime Music</a>
+          </div>
+        </div>
+        <hr>
+        <div class="row-3 row">
+          <h2>Shop by Department</h2>
+          <div class="menu">
+            <a href="#">Mobiles, Computers</a>
+            <a href="#">TV, Appliences, Electronics</a>
+            <a href="#">Men's Fashion</a>
+            <a href="#">Women's Fashion</a>
+            <a href="#">See All</a>
+          </div>
+        </div>
+        <hr>
+        <div class="row-4 row">
+          <h2>Programs & Features</h2>
+          <div class="menu">
+            <a href="#">Gift Cards & Mobile Recharges</a>
+            <a href="#">Flight Tickets</a>
+            <a href="#">#FoundItOnAmazon</a>
+            <a href="#">Clearencs Store</a>
+          </div>
+        </div>
+        <hr>
+        <div class="row-5 row">
+          <h2>Help & Settings</h2>
+          <div class="menu">
+            <a href="{% url 'account' %}">Your Account</a>
+            <a href="#">Customer Service</a>
+            <a href="{% url 'logout' %}">Sign Out</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div class="sub-container container">
+      <nav class="sub-nav">
+        <div class="col open-menu-desktop">
+          <i class="uil uil-bars menu-icon open-menu"></i>
+          <strong>
+            <h3>All</h3>
+          </strong>
+        </div>
+        <div class="col">
+          <strong>Fresh</strong>
+        </div>
+        <div class="col">
+          <strong>Mobiles</strong>
+        </div>
+        <div class="col">
+          <strong>Amazon Pay</strong>
+        </div>
+        <div class="col">
+          <strong>Buy Again</strong>
+        </div>
+        <div class="col">
+          <strong>New Release</strong>
+        </div>
+        <div class="col">
+          <strong>Gift Ideas</strong>
+        </div>
+        <div class="col">
+          <strong>Health, Household & Personal Care</strong>
+        </div>
+        <div class="col">
+          <strong>Amazon Basics</strong>
+        </div>
+        <div class="col">
+          <strong>Home Improvements</strong>
+        </div>
+        <div class="col">
+          <strong>Coupons</strong>
+        </div>
+        <div class="col">
+          <strong>Sports, Fitness & Outdoors</strong>
+        </div>
+        <div class="col">
+          <strong>Gift Card</strong>
+        </div>
+        <div class="col">
+          <strong>Baby</strong>
+        </div>
+        <div class="col">
+          <strong>Browsing History</strong>
+          <i class="uil uil-angle-down history-icon"></i>
+        </div>
+        <div class="col">
+          <strong>Today's Deals</strong>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  {% block main-content-desk-index %}{% endblock %}
+  {% block main-content-desk-product %}{% endblock %}
+  {% block main-content-desk-productlist %}{% endblock %}
+  {% block main-content-desk-noproduct %}{% endblock %}
+  {% block main-content-desk-address %}{% endblock %}
+  {% block main-content-desk-checkout %}{% endblock %}
+  {% block main-content-desk-checkoutcart %}{% endblock %}
+  {% block main-content-desk-account %}{% endblock %}
+  {% block main-content-desk-addtocart %}{% endblock %}
+  {% block main-content-desk-emptycart %}{% endblock %}
+  {% block main-content-desk-orders %}{% endblock %}
+  {% block main-content-desk-profile %}{% endblock %}
+  {% block main-content-desk-passwordchange %}{% endblock %}
+  {% block main-content-desk-changeaddress %}{% endblock %}
+  {% block main-content-desk-addaddress %}{% endblock %}
+  {% block main-content-desk-editaddress %}{% endblock %}
+  {% block main-content-desk-deleteaddress %}{% endblock %}
+  {% block main-content-desk-editemail %}{% endblock %}
+  {% block main-content-desk-editmobile %}{% endblock %}
+  {% block main-content-desk-editname %}{% endblock %}
+  {% block main-content-desk-thankyou %}{% endblock %}
+
+  <footer class="upper-desk">
+    <div class="foot-col-1 foot-col">
+      <div class="footer-title">
+        <h4><strong>Get to know us</strong></h4>
+      </div>
+      <div class="footer-content">
+        <span><small>About us</small></span>
+        <span><small>Careers</small></span>
+        <span><small>Press Releases</small></span>
+        <span><small>Amazon Cares</small></span>
+        <span><small>Gift a Smile</small></span>
+        <span><small>Amazon Science</small></span>
+      </div>
+    </div>
+    <div class="foot-col-2 foot-col">
+      <div class="footer-content-box">
+        <div class="footer-title">
+          <h4><strong>Connect with Us</strong></h4>
+        </div>
+        <div class="footer-content">
+          <span><small>Facebook</small></span>
+          <span><small>Twitter</small></span>
+          <span><small>Instagram</small></span>
+          <span><small></small></span>
+          <span><small></small></span>
+          <span><small></small></span>
+          <span><small></small></span>
+        </div>
+      </div>
+    </div>
+    <div class="foot-col-3 foot-col">
+      <div class="footer-content-box">
+        <div class="footer-title">
+          <h4><strong>Make Money with Us</strong></h4>
+        </div>
+        <div class="footer-content">
+          <span><small>Sell on Amazon</small></span>
+          <span><small>Sell under Amazon Accelerator</small></span>
+          <span><small>Amazon Global Selling</small></span>
+          <span><small>Become an Affilate</small></span>
+          <span><small>Fulfilled by Amazon</small></span>
+          <span><small>Advertise your Products</small></span>
+        </div>
+      </div>
+    </div>
+    <div class="foot-col-4 foot-col">
+      <div class="footer-content-box">
+        <div class="footer-title">
+          <h4><strong>Let Us Help You</strong></h4>
+        </div>
+        <div class="footer-content">
+          <span><small>Covid-19 and Amazon</small></span>
+          <span><small>Your Account</small></span>
+          <span><small>Return Center</small></span>
+          <span><small>100% Purchase Protection</small></span>
+          <span><small>Amazon App Download</small></span>
+          <span><small>Amazon Assistant Download</small></span>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <footer class="middle-desk">
+    <div class="footer-img">
+      <img src="{% static 'app/img/amazon-logo.png' %}" alt="">
+    </div>
+    <div class="countries">
+      <span><small>Australia</small></span>
+      <span><small>Brazil</small></span>
+      <span><small>Canada</small></span>
+      <span><small>China</small></span>
+      <span><small>France</small></span>
+      <span><small>Germany</small></span>
+      <span><small>Italy</small></span>
+      <span><small>Japan</small></span>
+      <span><small>Mexico</small></span>
+      <span><small>Netherlands</small></span>
+      <span><small>Poland</small></span>
+      <span><small>Singapore</small></span>
+      <span><small>Spain</small></span>
+      <span><small>Turkey</small></span>
+      <span><small>United Kingdom</small></span>
+      <span><small>United Arab Emirates</small></span>
+    </div>
+  </footer>
+  <footer class="lower-desk">
+    <div class="center">
+      <div class="footer-content-box">
+        <div class="footer-title lower-title">
+          <h4><strong>AbeBooks</strong></h4>
+        </div>
+        <div class="footer-content lower-content">
+          <span><small>Books art & collectibles</small></span>
+        </div>
+      </div>
+      <div class="footer-content-box">
+        <div class="footer-title lower-title">
+          <h4><strong>Amazon Web Services</strong></h4>
+        </div>
+        <div class="footer-content lower-content">
+          <span><small>Scalable Cloud Computing Services</small></span>
+        </div>
+      </div>
+      <div class="footer-content-box">
+        <div class="footer-title lower-title">
+          <h4><strong>Audible</strong></h4>
+        </div>
+        <div class="footer-content lower-content">
+          <span><small>Download Audio Books</small></span>
+        </div>
+      </div>
+      <div class="footer-content-box">
+        <div class="footer-title lower-title">
+          <h4><strong>DPReview</strong></h4>
+        </div>
+        <div class="footer-content lower-content">
+          <span><small>Digital Photography</small></span>
+        </div>
+      </div>
+      <div class="footer-content-box">
+        <div class="footer-title lower-title">
+          <h4><strong>Shopbop</strong></h4>
+        </div>
+        <div class="footer-content lower-content">
+          <span><small>Designer Fashion Brands</small></span>
+        </div>
+      </div>
+      <div class="footer-content-box">
+        <div class="footer-title lower-title">
+          <h4><strong>Amazon Business</strong></h4>
+        </div>
+        <div class="footer-content lower-content">
+          <span><small>Everything for your Business</small></span>
+        </div>
+      </div>
+      <div class="footer-content-box">
+        <div class="footer-title lower-title">
+          <h4><strong>Prime Now</strong></h4>
+        </div>
+        <div class="footer-content lower-content">
+          <span><small>2-Hours Delivery onEveryday items</small></span>
+        </div>
+      </div>
+      <div class="footer-content-box">
+        <div class="footer-title lower-title">
+          <h4><strong>Amazon Prime Music</strong></h4>
+        </div>
+        <div class="footer-content lower-content">
+          <span><small>90 million songs, ad-free</small></span>
+        </div>
+      </div>
+    </div>
+    <div class="copyright">
+      &copy; All rights reserved by Siddhant Totade
+    </div>
+  </footer>
+</body>
+{% block js-home %}{% endblock %}
+{% block js-product %}{% endblock %}
+{% block js-productlist %}{% endblock %}
+{% block js-noproduct %}{% endblock %}
+{% block js-address %}{% endblock %}
+{% block js-checkout %}{% endblock %}
+{% block js-checkoutcart %}{% endblock %}
+{% block js-account %}{% endblock %}
+{% block js-addtocart %}{% endblock %}
+{% block js-emptycart %}{% endblock %}
+{% block js-orders %}{% endblock %}
+{% block js-profile %}{% endblock %}
+{% block js-passwordchange %}{% endblock %}
+{% block js-changeaddress %}{% endblock %}
+{% block js-addaddress %}{% endblock %}
+{% block js-editaddress %}{% endblock %}
+{% block js-deleteaddress %}{% endblock %}
+{% block js-editemail %}{% endblock %}
+{% block js-editmobile %}{% endblock %}
+{% block js-editname %}{% endblock %}
+{% block js-thankyou %}{% endblock %}
+{% block js-upload-product %}{% endblock %}
+<script src="{% static 'app/js/base.js' %}"></script>
+
+</html>

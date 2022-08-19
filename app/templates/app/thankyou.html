@@ -1,0 +1,72 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block style-thankyou %}
+<link rel="stylesheet" href="{% static 'app/css/thankyou.css' %}">
+{% endblock %}
+
+{% block title %}Thankyou{% endblock %}
+
+{% block main-content-desk-thankyou %}
+<div class="thankyou">
+    <div class="tick-thankyou">
+        <i class="uil uil-check"></i>
+    </div>
+    <div class="thankyou-title">
+        <h1>Thank You for Ordering from Us.</h1>
+        <h3>Please check your email for order confirmation and detailed delivery information or visit Message Center
+            to review your notifications.</h3>
+        <div class="delivery">
+            <div class="gurantee">
+                <strong>Guranteed delivery:</strong>
+            </div>
+            <div class="delivery-date">
+                <strong>
+                    <h4>{{delivery_date}}</h4>
+                </strong>
+            </div>
+        </div>
+    </div>
+    <div class="product-img">
+        <img src="{% static 'app/img/payment-done.png' %}" alt="">
+    </div>
+</div>
+<div class="continue-shopping">
+    <a href="{% url 'home' %}" class="continue-shopping-btn">Continue Shopping</a>
+</div>
+{% endblock %}
+
+{% block main-content-mob-thankyou %}
+<div class="thank-you-mob">
+    <div class="thank">
+        <i class="uil uil-check"></i>
+        <div class="thankyou-order">
+            <h1>Thank You for Ordering from Us.</h1>
+            <h3>
+                Please check your email for order confirmation and detailed delivery information or visit
+                Message Center to review your notifications.
+            </h3>
+            <div class="delivery">
+                <div class="gurantee">
+                    <strong>Guranteed delivery:</strong>
+                </div>
+                <div class="delivery-date">
+                    <strong>
+                        <h4>{{delivery_date}}</h4>
+                    </strong>
+                </div>
+            </div>
+            <div class="product-img">
+                <img src="{% static 'app/img/payment-done.png' %}" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="continue-shopping-mob">
+    <a href="{% url 'home' %}" class="shopping">Continue Shopping</a>
+</div>
+{% endblock %}
+
+{% block js-thankyou %}
+<script src="{% static 'app/js/thankyou.js' %}"></script>
+{% endblock %}

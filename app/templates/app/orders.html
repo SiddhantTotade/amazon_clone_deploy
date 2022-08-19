@@ -1,0 +1,109 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block title %}Orders{% endblock %}
+
+{% block style-orders %}
+<link rel="stylesheet" href="{% static 'app/css/orders.css' %}">
+{% endblock %}
+
+{% block main-content-desk-orders %}
+<!-- Orders for Desktop  -->
+<div class="orders">
+    <div class="order-title">
+        <h1>Your Orders</h1>
+    </div>
+    <div class="user-orders">
+        {% if order_placed.exists %}
+        {% for op in order_placed %}
+        <div class="user-order-block">
+            <div class="order-img">
+                <img src="{{op.product.product_image.url}}" alt="">
+            </div>
+            <div class="order-content">
+                <h2>Arriving {{delivery_date}}</h2>
+                <h3>{{op.product.title}}</h3>
+                <h3>Quantity: {{op.quantity}}</h3>
+                <div class="buy-again">
+                    <a href="{% url 'selectaddress' op.product.id %}">Buy Again <i class="uil uil-sync"></i></a>
+                </div>
+                <div class="order-price">
+                    <h4>₹ {{op.total_cost}}</h4>
+                </div>
+            </div>
+            {% if op.status == 'Accepted' %}
+            <div class="order-status">
+                <h4>Order Status: {{op.status}}</h4>
+                <div class="progress-bar">
+                    <div class="progress-accepted"></div>
+                </div>
+            </div>
+            {% elif op.status == 'Packed' %}
+            <div class="order-status">
+                <h4>Order Status: {{op.status}}</h4>
+                <div class="progress-bar">
+                    <div class="progress-packed"></div>
+                </div>
+            </div>
+            {% elif op.status == 'On the way' %}
+            <div class="order-status">
+                <h4>Order Status: {{op.status}}</h4>
+                <div class="progress-bar">
+                    <div class="progress-ontheway"></div>
+                </div>
+            </div>
+            {% elif op.status == 'Delivered' %}
+            <div class="order-status">
+                <h4>Order Status: {{op.status}}</h4>
+                <div class="progress-bar">
+                    <div class="progress-delivered"></div>
+                </div>
+            </div>
+            {% elif op.status == 'Cancel' %}
+            <div class="order-cancel">
+                <h4>Order Status: {{op.status}}</h4>
+                <h3 class="progress-cancel">This order is cancelled by you.</h3>
+            </div>
+            {% endif %}
+        </div>
+        {% endfor %}
+        {% else %}
+        <div class="empty-order">
+            <h2>You have nothing in your order. Please buy something.</h2>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
+{% block main-content-mob-orders %}
+<!--Header for Mobile -->
+<div class="orders-mob">
+    <div class="order-title">
+        <h1>Your Orders</h1>
+    </div>
+    <div class="user-orders">
+        {% for op in order_placed %}
+        <div class="user-order-block">
+            <div class="order-img">
+                <img src="{{op.product.product_image.url}}" alt="">
+            </div>
+            <div class="order-content">
+                <h3>Arriving {{delivery_date}}</h3>
+                <h5>{{op.product.title}}</h5>
+                <div class="buy-again">
+                    <a href="{% url 'selectaddress' op.product.id %}">Buy Again <i class="uil uil-sync"></i></a>
+                </div>
+                <div class="order-price">
+                    <h4>₹ {{op.total_cost}}</h4>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
+{% block js-orders %}
+<script src="{% static 'app/js/orders.js' %}"></script>
+{% endblock %}

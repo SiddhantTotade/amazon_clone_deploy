@@ -1,0 +1,60 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block title %}Profile{% endblock %}
+
+{% block style-profile %}
+<link rel="stylesheet" href="{% static 'app/css/profile.css' %}">
+{% endblock %}
+
+
+{% block main-content-desk-profile %}
+<!-- Login and Security for desktop -->
+<div class="login-security">
+    <div class="login-title">
+        <h1>Login & Security</h1>
+    </div>
+    <div class="login-security-container">
+        <a href="{% url 'editname' %}" class="name">
+            <h3>Username:</h3>
+            <small>{{ request.user|capfirst }}</small>
+        </a>
+        <a href="{% url 'editemail' %}" class="email name">
+            <h3>E-mail:</h3>
+            <small>{{ request.user.email }}</small>
+        </a>
+        <a href="{% url 'passwordchange' %}" class="password name">
+            <h3>Password:</h3>
+            <small>xxxxxxxxxx</small>
+        </a>
+    </div>
+</div>
+{% endblock %}
+
+
+{% block main-content-mob-profile %}
+<!--Header for Mobile -->
+<div class="login-security-mob">
+    <div class="login-title">
+        <h1>Login & Security</h1>
+    </div>
+    <div class="login-security-container">
+        <a href="{% url 'editname' %}" class="name-mob">
+            <h3>Username:</h3>
+            <small>{{ request.user|capfirst }}</small>
+        </a>
+        <a href="{% url 'editemail' %}" class="email name-mob">
+            <h3>E-mail:</h3>
+            <small>{{ request.user.email }}</small>
+        </a>
+        <a href="{% url 'passwordchange' %}" class="password name-mob">
+            <h3>Password:</h3>
+            <small>xxxxxxxxxx</small>
+        </a>
+    </div>
+</div>
+{% endblock %}
+
+{% block js-profile %}
+<script src="{% static 'app/js/profile.js' %}"></script>
+{% endblock %}
