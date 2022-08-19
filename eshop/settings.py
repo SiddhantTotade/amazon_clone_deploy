@@ -139,4 +139,4 @@ EMAIL_HOST_PASSWORD = password.password
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 
-STATIC_ROOT = os.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
