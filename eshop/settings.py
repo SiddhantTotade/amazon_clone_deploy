@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
+import os
 from pathlib import Path
 from app import password
 
@@ -137,3 +138,5 @@ EMAIL_HOST_PASSWORD = password.password
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
+
+STATIC_ROOT = os.join(BASE_DIR, 'staticfiles')
