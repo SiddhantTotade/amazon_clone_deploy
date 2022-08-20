@@ -25,8 +25,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-m4o3d58ju^@^2tu333*4i#o4at=$*nosml*7^s8u*7%f=z8+5o'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-# DEBUG = False
+# DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1', 'amazon-clone-1994.herokuapp.com']
 
@@ -142,4 +142,3 @@ EMAIL_HOST_PASSWORD = password.password
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
-
