@@ -1,0 +1,284 @@
+body {
+    background: rgb(255, 255, 255);
+}
+
+@media screen and (min-width:401px) {
+
+    .select-address-container {
+        width: 80%;
+        margin: auto;
+        display: grid;
+        margin-bottom: 15em;
+    }
+
+    .select-address {
+        width: 80%;
+        padding-bottom: 20px;
+        background-color: #fff;
+        margin: auto;
+        border-bottom: 1px solid gainsboro;
+    }
+
+    .select-address h1,
+    .select-address h2,
+    .select-address h3,
+    .select-address h4,
+    .select-address h5,
+    .select-address p,
+    .select-address a,
+    .select-address button {
+        color: #000000;
+    }
+
+    .address-title h1 {
+        padding: 15px 0;
+    }
+
+    .loop-address-container {
+        margin-top: 1em;
+        display: flex;
+        gap: 20px;
+    }
+
+    .current-address {
+        display: grid;
+        padding: 20px 0;
+        gap: 10px;
+        border: 2px solid gainsboro;
+        border-radius: 5px;
+        padding: 10px 10px;
+    }
+
+    .user-address-container {
+        display: grid;
+        gap: 5px;
+    }
+
+    .user-add {
+        display: flex;
+    }
+
+    .user-add small,
+    .user-add h5 {
+        color: #000000;
+    }
+
+    .user-add a {
+        display: grid;
+        gap: 5px;
+        text-decoration: none;
+    }
+
+    .name {
+        display: flex;
+        gap: 5px;
+    }
+
+    .deliver-button {
+        width: 100%;
+        display: flex;
+    }
+
+    .deliver-button input {
+        color: #000000;
+        font-size: medium;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        text-decoration: none;
+        padding: 10px 40px;
+        border-radius: 5px;
+        border: none;
+        background-color: orange;
+    }
+
+    .edit-del-button {
+        width: 100%;
+        display: flex;
+        gap: 10px;
+    }
+
+    .edit-del-button a {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        padding: 10px 40px;
+        border-radius: 5px;
+        border: none;
+        text-decoration: none;
+        background-color: orange;
+    }
+
+    .add-address {
+        display: grid;
+        gap: 20px;
+    }
+
+    .add-address-title {
+        padding: 20px 0;
+    }
+
+    .user-form {
+        display: grid;
+        gap: 10px;
+    }
+
+    .user-add {
+        display: grid;
+    }
+
+    .add-address input {
+        width: 50%;
+        height: 4vh;
+        border-radius: 5px;
+        padding: 10px 10px;
+        border: none;
+        background-color: #e8e8e8;
+        color: #000000;
+        font-size: medium;
+    }
+
+    .add-address select {
+        width: 50%;
+        height: 4vh;
+        border-radius: 5px;
+        border: none;
+        background-color: #e8e8e8;
+        color: #000000;
+        font-size: medium;
+    }
+
+    .add-address label {
+        color: #000000;
+    }
+
+    .add-address option {
+        color: #000000;
+    }
+
+    .save button {
+        cursor: pointer;
+        padding: 10px 20px;
+        font-size: medium;
+        background-color: orange;
+        color: #000000;
+        border-radius: 5px;
+        border: none;
+    }
+}
+
+@media screen and (max-width:400px) {
+
+    .header-mob-address {
+        background-color: #fff;
+        padding-bottom: 15px;
+    }
+
+    .address-container {
+        display: grid;
+        gap: 20px;
+        padding: 0 10px;
+    }
+
+    .address-title {
+        padding: 20px 0;
+    }
+
+    .address-container h5,
+    .address-container h4,
+    .address-container h2,
+    .address-container p {
+        color: #000000;
+    }
+
+    .user-address-loop {
+        display: grid;
+        border: 2px solid gainsboro;
+        border-radius: 5px;
+        padding: 10px 10px;
+    }
+
+    .user-address {
+        display: grid;
+        width: 100%;
+        gap: 10px;
+    }
+
+    .delivery-buttons {
+        width: 80%;
+        margin: auto;
+        display: grid;
+        margin-top: 10px;
+        gap: 10px;
+    }
+
+    .deliver-form input {
+        width: 100%;
+        display: flex;
+        font-size: medium;
+        justify-content: center;
+        padding: 10px 0;
+        background-color: yellow;
+        color: #000000;
+        border-radius: 5px;
+        border: none;
+        text-decoration: none;
+    }
+
+    .edit-btn {
+        display: grid;
+        gap: 10px;
+    }
+
+    .edit-btn a {
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        color: #000000;
+        padding: 10px 70px;
+        text-decoration: none;
+        border: 2px solid gainsboro;
+        border-radius: 5px;
+    }
+
+    .edit {
+        background-color: #fff;
+        border-radius: 5px;
+        color: #000000;
+        border: 1px solid gray;
+    }
+
+    .new-address h3,
+    .new-address i {
+        color: #000000;
+    }
+
+    .add-address {
+        color: #000000;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 5vh;
+        margin-top: 20px;
+        padding: 0 10px;
+        border: 1px solid gray;
+        border-radius: 5px;
+    }
+
+    .add-address a {
+        color: #000000;
+        text-decoration: none;
+    }
+
+    .pickup-location {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 5vh;
+        padding: 0 10px;
+        border: 1px solid gray;
+        border-radius: 5px;
+    }
+}

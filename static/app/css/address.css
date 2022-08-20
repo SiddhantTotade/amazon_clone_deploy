@@ -1,0 +1,134 @@
+body {
+    background: #fff;
+}
+
+/* Media Query for Desktop */
+@media screen and (min-width:401px) {
+
+    .user-address {
+        display: grid;
+        width: 80%;
+        margin: auto;
+        padding: 10px 10px;
+        gap: 10px;
+        margin-bottom: 15em;
+    }
+
+    .user-address h1,
+    .user-address h5,
+    .user-address h3,
+    .user-address small {
+        color: #000000;
+    }
+
+    .user-add {
+        display: flex;
+        gap: 10px;
+    }
+
+    .user-address-container {
+        display: grid;
+        gap: 15px;
+        padding: 10px 10px;
+        margin-top: 2em;
+        border-radius: 5px;
+        border: 2px solid grey;
+        text-decoration: none;
+    }
+
+    .user-address-container:hover {
+        background-color: #cfcfcf;
+    }
+
+
+    .name {
+        display: flex;
+        gap: 5px;
+    }
+
+    .name h5 {
+        display: grid;
+        justify-content: center;
+        width: 20%;
+    }
+
+    .name small {
+        width: 80%;
+    }
+
+    .name:hover {
+        background-color: #cdcdcd;
+        cursor: pointer;
+    }
+
+    .save {
+        margin: 15px 0;
+    }
+
+    .save a {
+        padding: 10px 25px;
+        text-decoration: none;
+        border: none;
+        border-radius: 5px;
+        background-color: yellow;
+        color: #000000;
+    }
+}
+
+/* Media Query for Mobile */
+@media screen and (max-width:400px) {
+
+    .user-address-mob {
+        display: grid;
+        gap: 20px;
+        padding: 10px 10px;
+    }
+
+    .user-address-container {
+        display: grid;
+        gap: 15px;
+        padding: 10px 10px;
+        border-radius: 5px;
+        border: 2px solid grey;
+    }
+
+    .user-address-mob h1,
+    .user-address-mob h5,
+    .user-address-mob h3,
+    .user-address-mob small {
+        color: #000000;
+    }
+
+    .user-add {
+        display: grid;
+        gap: 10px;
+    }
+
+    .name {
+        display: flex;
+        gap: 5px;
+    }
+
+    .name h5 {
+        display: grid;
+        justify-content: center;
+        width: 20%;
+    }
+
+    .name small {
+        width: 80%;
+    }
+
+    .save {
+        margin-bottom: 1em;
+    }
+
+    .save a {
+        text-decoration: none;
+        padding: 10px 25px;
+        border: none;
+        border-radius: 5px;
+        background-color: yellow;
+        color: #000000;
+    }
+}

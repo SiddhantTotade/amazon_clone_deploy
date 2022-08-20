@@ -1,0 +1,230 @@
+body {
+    background: rgb(255, 255, 255);
+}
+
+@media screen and (min-width:401px) {
+
+    .payment {
+        display: grid;
+        width: 80%;
+        margin: auto;
+        margin-bottom: 15em;
+    }
+
+    .payment-title {
+        width: 80%;
+        margin: auto;
+        padding: 15px 0;
+    }
+
+    .payment-title h4,
+    .payment-title h1,
+    .payment-title h5,
+    .payment-title small {
+        color: #000000;
+    }
+
+
+    .payment-block-1 {
+        padding-top: 1em;
+        padding-bottom: 1em;
+        border-bottom: 1px solid gainsboro;
+    }
+
+    .payment-block-1 button {
+        width: 15%;
+        height: 3vh;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        font-size: medium;
+        padding: 20px 15px;
+        text-decoration: none;
+        border-radius: 5px;
+        border: none;
+        background-color: orange;
+        color: #000000;
+        cursor: pointer;
+    }
+
+    .payment input:hover {
+        cursor: pointer;
+    }
+
+    .amazon-pay-bal {
+        display: flex;
+        justify-content: space-between;
+        padding-top: 1em;
+    }
+
+    .pay-content {
+        display: grid;
+        gap: 10px;
+    }
+
+    .payment-block-2 {
+        display: grid;
+        gap: 25px;
+    }
+
+    .cvv input {
+        width: 5%;
+        height: 3vh;
+        border-radius: 5px;
+        border: 1px solid orange;
+    }
+
+    .chkbox input {
+        width: 2%;
+        height: 15px;
+    }
+
+    .chkbox h6 {
+        padding: 0 10px;
+    }
+
+    .chkbox {
+        display: flex;
+        align-items: center;
+    }
+
+    .chkbox img {
+        width: 20%;
+        height: 3vh;
+        object-fit: contain;
+    }
+}
+
+
+@media screen and (max-width:400px) {
+
+    .payment-mob {
+        display: grid;
+        gap: 20px;
+    }
+
+    .address-container {
+        padding: 0 10px;
+    }
+
+    .address-title {
+        width: 95%;
+        margin: auto;
+        display: grid;
+        border-bottom: 1px solid gainsboro;
+        padding: 20px 0;
+        gap: 10px;
+    }
+
+    .address-title h2,
+    .address-title h4,
+    .address-title h5,
+    .address-title small {
+        color: #000000;
+    }
+
+    .address-title i {
+        font-size: 20px;
+        color: rgb(6, 187, 253);
+    }
+
+    .next-mob {
+        display: none;
+        margin-bottom: 1em;
+    }
+
+    .next-mob button {
+        width: 90%;
+        margin: auto;
+        height: 4vh;
+        background-color: yellow;
+        color: #000000;
+        border-radius: 5px;
+        border: none;
+    }
+
+    .amazon-pay-content {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .pay-later {
+        display: flex;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .pay-later input {
+        width: 5%;
+        height: 2vh;
+    }
+
+    .holder {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .holder input {
+        width: 5%;
+        height: 2vh;
+    }
+
+    .info {
+        display: grid;
+        gap: 10px;
+    }
+
+    .info input {
+        width: 40%;
+        height: 4vh;
+        border: 1px solid orange;
+        border-radius: 5px;
+    }
+
+    .recommended {
+        display: flex;
+        align-items: center;
+    }
+
+    .recommended small {
+        padding: 0 10px;
+    }
+
+    .chkbox {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .chkbox input {
+        width: 15px;
+        padding: 0 10px;
+    }
+
+    .ways {
+        display: grid;
+        gap: 20px;
+    }
+
+    .upi {
+        display: flex;
+        gap: 20px;
+    }
+
+    .upi input {
+        width: 5%;
+        height: 2vh;
+    }
+
+    .pay-on-delivery {
+        display: flex;
+        align-items: center;
+    }
+
+    .pay-on-delivery input {
+        width: 10%;
+        height: 2vh;
+    }
+}
