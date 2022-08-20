@@ -5,6 +5,9 @@ from app import views
 from django.contrib.auth import views as auth_views
 from .forms import LoginForm, MyPasswordChangeForm, MyPasswordResetForm, MySetPasswordForm
 
+from django.views.static import serve
+from django.urls import re_path as url
+
 urlpatterns = [
     path('', views.ProductView.as_view(), name='home'),
     path('product-detail/<int:pk>',
@@ -50,4 +53,9 @@ urlpatterns = [
     path('payment/<int:pk>', views.payment, name='payment'),
     path('paymentdone/', views.payment_done, name='paymentdone'),
     path('uploaddetails/', views.ProductUpload.as_view(), name='saveproduct'),
+
+    url(r'^media/(?P<path>.*)$', serve,
+        {'document_root':       settings.MEDIA_ROOT}),
+    url(r'^static/(?P<path>.*)$', serve,
+        {'document_root': settings.STATIC_ROOT}),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
