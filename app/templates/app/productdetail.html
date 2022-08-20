@@ -60,21 +60,7 @@
             </table>
         </div>
         <div class="product-colors product-name">
-            <div class="color">
-                <img src="./img/product/product-color-1.jpg" alt="">
-            </div>
-            <div class="color">
-                <img src="./img/product/product-color-2.jpg" alt="">
-            </div>
-            <div class="color">
-                <img src="./img/product/product-color-3.jpg" alt="">
-            </div>
-            <div class="color">
-                <img src="./img/product/product-color-4.jpg" alt="">
-            </div>
-            <div class="color">
-                <img src="./img/product/product-color-5.jpg" alt="">
-            </div>
+            <!-- Product Color Images - Desktop -->
         </div>
         <div class="buy product-name">
             {% if request.user.is_authenticated %}
@@ -341,21 +327,6 @@
                 <img src="{{p.product_img_desk.url}}" alt="">
             </div>
             {% endfor %}
-            <!-- <div class="item">
-                <img src="{% static 'app/img/product/product-img-2.jpg' %}" alt="">
-            </div>
-            <div class="item">
-                <img src="{% static 'app/img/product/product-img-3.jpg' %}" alt="">
-            </div>
-            <div class="item">
-                <img src="{% static 'app/img/product/product-img-4.jpg' %}" alt="">
-            </div>
-            <div class="item">
-                <img src="./img/product/product-img-5.jpg" alt="">
-            </div>
-            <div class="item">
-                <img src="./img/product/product-img-6.jpg" alt="">
-            </div> -->
         </div>
         <div class="product-price">
             <h3>-2% ₹{{product.discounted_price}}</h3>
@@ -365,27 +336,8 @@
         </div>
     </div>
     <div class="product-color">
-        <!-- <div class="product-color-img">
-            <div class="color-img">
-                <img src="./img/product/product-mob-color-1.jpg" alt="">
-                <h4>Sierra Blue</h4>
-            </div>
-            <div class="color-img">
-                <img src="./img/product/product-mob-color-2.jpg" alt="">
-                <h4>Alpine Green</h4>
-            </div>
-            <div class="color-img">
-                <img src="./img/product/product-mob-color-3.jpg" alt="">
-                <h4>Gold</h4>
-            </div>
-            <div class="color-img">
-                <img src="./img/product/product-mob-color-4.jpg" alt="">
-                <h4>Graphite</h4>
-            </div>
-            <div class="color-img">
-                <img src="./img/product/product-mob-color-5.jpg" alt="">
-                <h4>Silver</h4>
-            </div>
+        <div class="product-color-img">
+            <!-- Product Color Image - Mobile -->
         </div>
         <div class="price-box">
             <div class="price-box-inner">
@@ -400,7 +352,7 @@
                 <p>512GB</p>
                 <h3>₹1,59,900.00</h3>
             </div>
-        </div> -->
+        </div>
     </div>
     <div class="product-offer">
         <table>
