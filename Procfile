@@ -1,1 +1,1 @@
-web: gunicorn eshop.wsgi --log-file -
+web: gunicorn amazon-clone-1994.wsgi --log-file -
