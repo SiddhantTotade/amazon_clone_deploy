@@ -1,1 +1,1 @@
-web : gunicorn eshop.wsgi -b 0.0.0.0:$PORT
+web :gunicorn eshop.wsgi
