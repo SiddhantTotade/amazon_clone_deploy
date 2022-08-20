@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-m4o3d58ju^@^2tu333*4i#o4at=$*nosml*7^s8u*7%f=z8+5o
 # DEBUG = True
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', 'pyvid.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'amazon-clone-1994.herokuapp.com']
 
 
 # Application definition
